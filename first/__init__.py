@@ -22,5 +22,5 @@ def prints_hello():
 
 	#Check are output have hello world text
 	if not GREETING_REGEX.search(cleaned_output):
-		raise check50.Failure("A greeting was expected for ecample: 'Hello', 'Привет', 'Сәлем')
+		raise check50.Failure("A greeting was expected for ecample: 'Hello', 'Привет', 'Сәлем'")
 
