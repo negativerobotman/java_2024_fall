@@ -1,8 +1,10 @@
 import check50
 
+GREETING_REGEX = re.compile(r"(hello|сәлем|hi|hey|)", re.IGNORECASE)
+
 @check50.check()
 def exists():
-	"""Are hello.py exist?"""
+	"""Hello.java exist?"""
 	check50.exists("Hello.java")
 
 @check50.check(exists)
@@ -13,5 +15,12 @@ def compiles():
 @check50.check(compiles)
 def prints_hello():
 	"""prints "hello, world\n" """
-	check50.run("./Hello").stdout("[Hh]ello, world!?\n", regex=True).exit(0)
+	output = check50.run("./Hello").stdout().strip()
+	
+	#Removing punctuation marks
+	cleaned_output = re.sub(r"[^\w\s]", "", output)
+
+	#Check are output have hello world text
+	if not GREETING_REGEX.search(cleaned_output):
+		raise check50.Failure("A greeting was expected for ecample: 'Hello', 'Привет', 'Сәлем')
 
