@@ -1,4 +1,5 @@
 import check50
+import re
 
 GREETING_REGEX = re.compile(r"(hello|сәлем|hi|hey|)", re.IGNORECASE)
 
