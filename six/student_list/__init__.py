@@ -15,7 +15,7 @@ def compiles():
 def test_output():
     """Проверка сортировки и фильтрации студентов"""
     # Для теста вводим значение через stdin
-    output = check50.run("java StudentSort").stdin("3.5").stdout()
+    output = check50.run("java StudentSort").stdin("3,5").stdout()
     
     # Проверка правильной сортировки
     assert "Alice" in output, "Программа должна включать Alice"
