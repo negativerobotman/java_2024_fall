@@ -1,6 +1,14 @@
 import check50
 import subprocess
 import os
+import re
+
+def remove_comments(code):
+	#Remove comments like /* ... */
+	code = re.sub(r"/\*.*?\*/", "", code, flags=re.DOTALL)
+	#Remove comments like // ...
+	code = re.sub(r"//.*", "", code)
+	return code
 
 @check50.check()
 def exists():
